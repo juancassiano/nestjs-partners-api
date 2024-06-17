@@ -1,0 +1,34 @@
+###
+@eventId = {{ createEvent.response.body.id }}
+
+###
+GET http://localhost:3000/events
+
+###
+GET http://localhost:3000/events/{{eventId}}
+
+###
+# @name createEvent
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+  "name": "Event 1",
+  "date": "2019-01-01",
+  "description": "Description 1",
+  "price": 100
+}
+
+###
+PATCH http://localhost:3000/events/{{eventId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Event",
+  "date": "2019-01-01",
+  "description": "Updated Description",
+  "price": 100
+}
+
+###
+DELETE http://localhost:3000/events/{{eventId}}
