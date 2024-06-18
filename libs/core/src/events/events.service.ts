@@ -1,9 +1,9 @@
-import { PrismaService } from './../prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { ReserveSpotDto } from './dto/reserve-spot.dto';
-import { SpotStatus, TicketStatus, PrismaClient, Prisma } from '@prisma/client';
+import {PrismaService} from '../prisma/prisma.service';
+import { SpotStatus, TicketStatus, Prisma } from '@prisma/client';
 
 @Injectable()
 export class EventsService {
