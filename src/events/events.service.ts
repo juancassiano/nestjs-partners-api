@@ -60,7 +60,7 @@ export class EventsService {
     }
 
     try{
-      const tickets = this.prismaService.$transaction(async (prisma) => {
+      const tickets = await this.prismaService.$transaction(async (prisma) => {
         await prisma.reservationHistory.createMany({
           data: spots.map((spot) => ({
             spotId: spot.id,
@@ -92,7 +92,7 @@ export class EventsService {
         );
     
         return tickets;
-      })
+      }, {isolationLevel: Prisma.TransactionIsolationLevel.ReadCommitted})
       return tickets;
     }catch(e){
       if(e instanceof Prisma.PrismaClientKnownRequestError){
